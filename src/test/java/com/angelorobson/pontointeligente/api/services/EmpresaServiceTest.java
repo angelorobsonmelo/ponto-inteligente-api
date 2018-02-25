@@ -1,7 +1,7 @@
 package com.angelorobson.pontointeligente.api.services;
 
-import com.kazale.pontointeligente.api.entities.Empresa;
-import com.kazale.pontointeligente.api.repositories.EmpresaRepository;
+import com.angelorobson.pontointeligente.api.entities.Empresa;
+import com.angelorobson.pontointeligente.api.repositories.EmpresaRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
