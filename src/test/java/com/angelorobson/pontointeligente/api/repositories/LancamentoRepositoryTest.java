@@ -1,11 +1,11 @@
 package com.angelorobson.pontointeligente.api.repositories;
 
-import com.angelorobson.pontointeligente.api.entities.Empresa;
-import com.angelorobson.pontointeligente.api.entities.Funcionario;
-import com.angelorobson.pontointeligente.api.entities.Lancamento;
-import com.angelorobson.pontointeligente.api.enums.PerfilEnum;
-import com.angelorobson.pontointeligente.api.enums.TipoEnum;
-import com.angelorobson.pontointeligente.api.utils.PasswordUtils;
+import com.kazale.pontointeligente.api.entities.Empresa;
+import com.kazale.pontointeligente.api.entities.Funcionario;
+import com.kazale.pontointeligente.api.entities.Lancamento;
+import com.kazale.pontointeligente.api.enums.PerfilEnum;
+import com.kazale.pontointeligente.api.enums.TipoEnum;
+import com.kazale.pontointeligente.api.utils.PasswordUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +22,6 @@ import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

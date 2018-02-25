@@ -1,9 +1,9 @@
 package com.angelorobson.pontointeligente.api.repositories;
 
-import com.angelorobson.pontointeligente.api.entities.Empresa;
-import com.angelorobson.pontointeligente.api.entities.Funcionario;
-import com.angelorobson.pontointeligente.api.enums.PerfilEnum;
-import com.angelorobson.pontointeligente.api.utils.PasswordUtils;
+import com.kazale.pontointeligente.api.entities.Empresa;
+import com.kazale.pontointeligente.api.entities.Funcionario;
+import com.kazale.pontointeligente.api.enums.PerfilEnum;
+import com.kazale.pontointeligente.api.utils.PasswordUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +15,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.security.NoSuchAlgorithmException;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)

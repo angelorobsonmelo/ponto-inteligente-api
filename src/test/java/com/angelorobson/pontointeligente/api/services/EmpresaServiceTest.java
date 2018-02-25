@@ -1,7 +1,7 @@
 package com.angelorobson.pontointeligente.api.services;
 
-import com.angelorobson.pontointeligente.api.entities.Empresa;
-import com.angelorobson.pontointeligente.api.repositories.EmpresaRepository;
+import com.kazale.pontointeligente.api.entities.Empresa;
+import com.kazale.pontointeligente.api.repositories.EmpresaRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,8 +33,8 @@ public class EmpresaServiceTest {
 
 	@Before
 	public void setUp() throws Exception {
-    BDDMockito.given(this.empresaRepository.save(Mockito.any(Empresa.class))).willReturn(new Empresa());
-    BDDMockito.given(this.empresaRepository.findByCnpj(Mockito.anyString())).willReturn(new Empresa());
+		BDDMockito.given(this.empresaRepository.findByCnpj(Mockito.anyString())).willReturn(new Empresa());
+		BDDMockito.given(this.empresaRepository.save(Mockito.any(Empresa.class))).willReturn(new Empresa());
 	}
 
 	@Test
