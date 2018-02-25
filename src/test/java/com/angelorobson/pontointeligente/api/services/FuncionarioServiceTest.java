@@ -2,7 +2,6 @@ package com.angelorobson.pontointeligente.api.services;
 
 import com.angelorobson.pontointeligente.api.entities.Funcionario;
 import com.angelorobson.pontointeligente.api.repositories.FuncionarioRepository;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,57 +15,54 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
 public class FuncionarioServiceTest {
 
-  @MockBean
-  FuncionarioRepository funcionarioRepository;
+	@MockBean
+	private FuncionarioRepository funcionarioRepository;
 
-  @Autowired
-  FuncionarioService funcionarioService;
+	@Autowired
+	private FuncionarioService funcionarioService;
 
-  private static final String CPF = "753.311.230-07";
-  private static final String EMAIL = "angelorobsonmelo@gmail.com";
-  private static final String ID = "22";
+	@Before
+	public void setUp() throws Exception {
+		BDDMockito.given(this.funcionarioRepository.save(Mockito.any(Funcionario.class))).willReturn(new Funcionario());
+		BDDMockito.given(this.funcionarioRepository.findOne(Mockito.anyLong())).willReturn(new Funcionario());
+		BDDMockito.given(this.funcionarioRepository.findByEmail(Mockito.anyString())).willReturn(new Funcionario());
+		BDDMockito.given(this.funcionarioRepository.findByCpf(Mockito.anyString())).willReturn(new Funcionario());
+	}
 
-  @Before
-  public void setup() throws Exception {
-    BDDMockito.given(this.funcionarioRepository.save(Mockito.any(Funcionario.class))).willReturn(new Funcionario());
-    BDDMockito.given(this.funcionarioRepository.findByCpf(Mockito.anyString())).willReturn(new Funcionario());
-    BDDMockito.given(this.funcionarioRepository.findByEmail(Mockito.anyString())).willReturn(new Funcionario());
-    BDDMockito.given(this.funcionarioRepository.findOne(Mockito.anyLong())).willReturn(new Funcionario());
-  }
+	@Test
+	public void testPersistirFuncionario() {
+		Funcionario funcionario = this.funcionarioService.persistir(new Funcionario());
 
-  @Test
-  public void testPersistirFuncionario() {
-    Funcionario funcionario = funcionarioService.persistir(new Funcionario());
+		assertNotNull(funcionario);
+	}
 
-    Assert.assertNotNull(funcionario);
-  }
+	@Test
+	public void testBuscarFuncionarioPorId() {
+		Optional<Funcionario> funcionario = this.funcionarioService.buscarPorId(1L);
 
-  @Test
-  public void testBuscarPorCpf() {
-    Optional funcionario = funcionarioService.buscarPorCpf(CPF);
+		assertTrue(funcionario.isPresent());
+	}
 
-    Assert.assertTrue(funcionario.isPresent());
-  }
+	@Test
+	public void testBuscarFuncionarioPorEmail() {
+		Optional<Funcionario> funcionario = this.funcionarioService.buscarPorEmail("email@email.com");
 
-  @Test
-  public void testBuscarPorEmail() {
-    Optional funcionario = funcionarioService.buscarPorEmail(EMAIL);
+		assertTrue(funcionario.isPresent());
+	}
 
-    Assert.assertTrue(funcionario.isPresent());
-  }
+	@Test
+	public void testBuscarFuncionarioPorCpf() {
+		Optional<Funcionario> funcionario = this.funcionarioService.buscarPorCpf("24291173474");
 
-  @Test
-  public void testBuscarPorID() {
-    Optional funcionario = funcionarioService.buscarPorEmail(ID);
-
-    Assert.assertTrue(funcionario.isPresent());
-  }
-
-
+		assertTrue(funcionario.isPresent());
+	}
 
 }
